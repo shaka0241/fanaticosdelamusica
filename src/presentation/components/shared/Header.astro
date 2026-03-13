@@ -26,13 +26,32 @@ import Button from '../ui/Button.astro';
                     Anúnciate Aquí
                 </Button>
                 
-                <!-- Botón Menú Móvil (Solo visual para esta versión rápida) -->
-                <button type="button" class="md:hidden bg-brand-dark inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                    <span class="sr-only">Abrir menú</span>
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <!-- Botón Menú Móvil -->
+                <button type="button" id="mobile-menu-btn" class="md:hidden bg-brand-dark inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-brand-primary/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary transition-colors" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="sr-only">Abrir menú principal</span>
+                    <!-- Icono hamburguesa -->
+                    <svg id="icon-menu" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
+                    <!-- Icono de cerrar (X) -->
+                    <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menú Móvil (Dropdown) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-brand-dark/95 backdrop-blur-md border-b border-white/10 absolute w-full transition-all duration-300 ease-in-out transform origin-top left-0 shadow-xl">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+            <a href="#inicio" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-brand-primary/20 hover:text-brand-primary transition-colors">Inicio</a>
+            <a href="#nosotros" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-brand-primary/20 hover:text-brand-primary transition-colors">El Programa</a>
+            <a href="#anunciantes" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-brand-primary/20 hover:text-brand-primary transition-colors">Anunciantes</a>
+            <div class="pt-4 mt-2 border-t border-gray-700/50">
+                <Button href="#contacto" variant="primary" class="w-full mobile-nav-link justify-center">
+                    Anúnciate Aquí
+                </Button>
             </div>
         </div>
     </div>
@@ -40,3 +59,41 @@ import Button from '../ui/Button.astro';
 
 <!-- Espaciador para evitar que el fixed header tape el contenido -->
 <div class="h-20"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+        const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMenu = () => {
+            const isExpanded = btn?.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle aria-expanded
+            btn?.setAttribute('aria-expanded', (!isExpanded).toString());
+            
+            // Toggle menu visibility
+            menu?.classList.toggle('hidden');
+            
+            // Toggle icons
+            iconMenu?.classList.toggle('hidden');
+            iconMenu?.classList.toggle('block');
+            iconClose?.classList.toggle('hidden');
+            iconClose?.classList.toggle('block');
+        };
+
+        // Open/Close on hamburger click
+        btn?.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking any link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(menu && !menu.classList.contains('hidden')){
+                    toggleMenu();
+                }
+            });
+        });
+    });
+</script>
