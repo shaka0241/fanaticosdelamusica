@@ -201,5 +201,54 @@
                 updateVolumeUI(lastVolume); // Desmutear
             }
         });
+
+        // --- Lógica de Auto-Reconexión ---
+        let reconnectTimeout: number | undefined;
+
+        const attemptReconnect = () => {
+            if (!isPlaying || !audio) return;
+            
+            if (playerStatus) playerStatus.textContent = "Reconectando transmisión...";
+            
+            // Recargar la fuente de audio para forzar la reconexión
+            audio.load();
+            audio.play().catch(() => {
+                if (playerStatus) playerStatus.textContent = "Reconexión fallida. Reintentando...";
+                
+                // Si falla, intentamos de nuevo en 5 segundos
+                clearTimeout(reconnectTimeout);
+                reconnectTimeout = window.setTimeout(attemptReconnect, 5000);
+            });
+        };
+
+        if (audio) {
+            audio.addEventListener('error', () => {
+                if (isPlaying) {
+                    console.warn("Error en el stream de audio. Intentando reconectar...");
+                    attemptReconnect();
+                }
+            });
+
+            audio.addEventListener('stalled', () => {
+                if (isPlaying) {
+                    console.warn("Stream de audio estancado. Intentando reconectar...");
+                    attemptReconnect();
+                }
+            });
+            
+            audio.addEventListener('ended', () => {
+                 if (isPlaying) {
+                     console.warn("Stream finalizado inesperadamente. Intentando reconectar...");
+                     attemptReconnect();
+                 }
+            });
+
+            audio.addEventListener('playing', () => {
+                if (playerStatus && isPlaying) {
+                    playerStatus.textContent = "Conectado al stream de Misión 94.3 FM...";
+                }
+                clearTimeout(reconnectTimeout);
+            });
+        }
     });
 </script>
