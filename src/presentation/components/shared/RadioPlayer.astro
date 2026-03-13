@@ -79,6 +79,12 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Constantes de Horario ---
+        const SHOW_START_HOUR = 8;
+        const SHOW_END_HOUR = 12; // Exclusive
+        const SUNDAY_DAY_INDEX = 0;
+        const SATURDAY_DAY_INDEX = 6;
+        
         // --- Referencias UI ---
         const playBtn = document.getElementById("play-btn");
         const iconPlay = document.getElementById("icon-play");
@@ -108,12 +114,12 @@
             const caracasTimeStr = now.toLocaleString("en-US", { timeZone: "America/Caracas" });
             const caracasNow = new Date(caracasTimeStr);
             
-            const dayOfWeek = caracasNow.getDay(); // 0 = Domingo, 6 = Sábado
+            const dayOfWeek = caracasNow.getDay();
             const currentHour = caracasNow.getHours();
             
-            // Asumiendo que el programa es fines de semana por la mañana (ej: Sab-Dom 8am a 12pm)
-            // Se puede ajustar este condicional a los horarios exactos del programa
-            const isFanaticosShow = (dayOfWeek === 0 || dayOfWeek === 6) && (currentHour >= 8 && currentHour < 12);
+            const isWeekend = dayOfWeek === SUNDAY_DAY_INDEX || dayOfWeek === SATURDAY_DAY_INDEX;
+            const isShowTime = currentHour >= SHOW_START_HOUR && currentHour < SHOW_END_HOUR;
+            const isFanaticosShow = isWeekend && isShowTime;
             
             if (showTitle) {
                 if (isFanaticosShow) {

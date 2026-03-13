@@ -1,28 +1,6 @@
 ---
-// Datos extraídos de anunciantes.txt
-const advertisers = [
-  { id: 1, name: "Supermarket Abasto y Carnicería Ángel de Dios", desc: "Víveres en general, verduras, hortalizas, frutas, panadería y gran carnicería.", phone: "04120644212" },
-  { id: 2, name: "Panaderia La Super Arco Iris C.A.", desc: "Pan fresco, dulce, salado, charcutería, refrescos, lácteos y víveres.", phone: null },
-  { id: 3, name: "Refrigeración Yanez", desc: "Repuestos de refrigeración doméstica, industrial y comercial.", phone: "04146668931" },
-  { id: 4, name: "Carnicería y Charcutería Mi Viejo C.A.", desc: "Carnes de primera calidad, charcutería, lácteos y víveres.", phone: "04246385470" },
-  { id: 5, name: "Panadería La Maison Dupain", desc: "Pan campesino, dulce, francés, dulces, lácteos, charcutería y víveres.", phone: null },
-  { id: 6, name: "Ferretería y Materiales Boca E´ Pan", desc: "Artículos de ferretería en general, materiales de construcción y electricidad.", phone: "04124511426" },
-  { id: 7, name: "Farmacia El Rosario II C.A.", desc: "Medicamentos, cosméticos, víveres y zona de café.", phone: "04246321392" },
-  { id: 8, name: "Carnicería, Charcutería y Viveres Mis Valentinas", desc: "Carnes de primera, pollos, charcutería, lácteos y víveres.", phone: "04146279224" },
-  { id: 9, name: "Feria de Verduras y Lacteos Campo Blanco", desc: "Ofertas en lácteos, frutas, verduras, hortalizas, condimentos y granos.", phone: null },
-  { id: 10, name: "Tatu Burger. Comida Rápida", desc: "Hamburguesas, perros calientes, arepitas cabimeras y combos especiales.", phone: "0424-6392203" },
-  { id: 13, name: "Madelpa", desc: "Todo para el carpintero, electricistas, pintor, herrero e iluminación.", phone: "0424-6853618" },
-  { id: 16, name: "Son Delicias", desc: "Empanadas doraditas crujientes con sazón tradicional.", phone: "04245976511" },
-  { id: 19, name: "Restaurante y parrillera como en el llano", desc: "Sopas, parrillas de carne, pollo, cerdo, chorizos y almuerzos tipo bufé.", phone: "0412-6588347" },
-  { id: 22, name: "Laboratorio clínico campo Elias", desc: "Todo tipo de exámenes con resultados exactos, reactivos y equipos nuevos.", phone: "0414-0594203" },
-  { id: 25, name: "Ruta 23", desc: "Desayunos, almuerzos, cenas, pizzas y cochinito frito.", phone: "0414-3904192" },
-  { id: 28, name: "Carniceria, charcutería y mini Market Del Campo", desc: "Carnes, lácteos, todo lo del mar y víveres en general.", phone: "0424-6593707" },
-  { id: 31, name: "Dr. Litxy González", desc: "Médico general e internista.", phone: "0412-1298718" },
-  { id: 34, name: "Auto eléctrico el Ratón", desc: "Servicios eléctrico para tu vehículo, activo las 24 horas.", phone: "0412-0640430" },
-  { id: 38, name: "Auto partes y suspensión IG", desc: "Suspensión, electroventiladores, bobinas, aceites y más.", phone: "0412-1225148" },
-  { id: 41, name: "La vaquerita un rincón del llano en cabimas", desc: "Cortes de carne en vara, sopa de costilla llanera en leña.", phone: "0424-6410519" }
-];
-
+import { advertisers } from '../../../data/advertisers';
+import AdvertiserCard from '../ui/AdvertiserCard.astro';
 ---
 
 <section id="anunciantes" class="py-24 bg-white relative">
@@ -39,30 +17,8 @@ const advertisers = [
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {advertisers.map((ad, idx) => (
-                <div class="bg-brand-light border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-300 group flex flex-col h-full transform hover:-translate-y-1">
-                    
-                    <div class="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-5 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                    </div>
-
-                    <h3 class="text-xl font-bold text-brand-dark mb-3 leading-snug group-hover:text-brand-primary line-clamp-2">{ad.name}</h3>
-                    <p class="text-gray-600 text-sm flex-grow mb-6 line-clamp-3">{ad.desc}</p>
-                    
-                    <div class="mt-auto pt-4 border-t border-gray-200/60">
-                        {ad.phone ? (
-                            <a href={`tel:${ad.phone.replace(/\D/g, '')}`} class="inline-flex items-center text-sm font-semibold text-brand-secondary hover:text-brand-primary transition-colors">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                                {ad.phone}
-                            </a>
-                        ) : (
-                            <span class="inline-flex items-center text-sm font-medium text-gray-400">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                Visítanos
-                            </span>
-                        )}
-                    </div>
-                </div>
+            {advertisers.map((ad) => (
+                <AdvertiserCard advertiser={ad} />
             ))}
         </div>
         
