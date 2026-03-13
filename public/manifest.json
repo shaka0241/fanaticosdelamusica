@@ -1,0 +1,21 @@
+{
+  "name": "Fanáticos de la Música",
+  "short_name": "Fanáticos",
+  "description": "El programa de radio que te hace recordar y bailar con los mejores ritmos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf9f3",
+  "theme_color": "#d25d11",
+  "icons": [
+    {
+      "src": "/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
