@@ -1,0 +1,28 @@
+---
+import MainLayout from '../presentation/layouts/MainLayout.astro';
+import Header from '../presentation/components/shared/Header.astro';
+import Footer from '../presentation/components/shared/Footer.astro';
+import WhatsAppButton from '../presentation/components/shared/WhatsAppButton.astro';
+
+import Hero from '../presentation/components/sections/Hero.astro';
+import About from '../presentation/components/sections/About.astro';
+import RadioPlayer from '../presentation/components/shared/RadioPlayer.astro';
+import AdvertisersList from '../presentation/components/sections/AdvertisersList.astro';
+import ContactForm from '../presentation/components/sections/ContactForm';
+---
+
+<MainLayout title="Inicio">
+	<Header />
+	
+	<main class="flex-grow scroll-smooth">
+		<Hero />
+		<About />
+		<RadioPlayer />
+		<AdvertisersList />
+		<ContactForm client:visible />
+	</main>
+
+	<Footer />
+	
+	<WhatsAppButton />
+</MainLayout>

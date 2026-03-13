@@ -1,0 +1,37 @@
+---
+export interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
+    variant?: 'primary' | 'secondary' | 'accent' | 'outline';
+    size?: 'sm' | 'md' | 'lg';
+    class?: string;
+    href?: string;
+}
+
+const { variant = 'primary', size = 'md', class: className, href, ...props } = Astro.props;
+
+const baseStyles = "inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+
+const variants = {
+    primary: "bg-brand-primary text-white hover:bg-brand-primary-light focus:ring-brand-primary shadow-lg shadow-brand-primary/30 hover:-translate-y-1",
+    secondary: "bg-brand-secondary text-white hover:bg-brand-secondary/90 focus:ring-brand-secondary shadow-lg shadow-brand-secondary/30 hover:-translate-y-1",
+    accent: "bg-brand-accent-red text-white hover:bg-brand-accent-red/90 focus:ring-brand-accent-red shadow-lg shadow-brand-accent-red/30 hover:-translate-y-1",
+    outline: "border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white focus:ring-brand-primary",
+};
+
+const sizes = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg",
+};
+
+const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className || ''}`;
+---
+
+{href ? (
+    <a href={href} class={classes} {...props as any}>
+        <slot />
+    </a>
+) : (
+    <button class={classes} {...props}>
+        <slot />
+    </button>
+)}

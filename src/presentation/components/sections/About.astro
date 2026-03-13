@@ -1,0 +1,75 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section id="nosotros" class="py-24 bg-brand-light relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            
+            <!-- Imagen / Composición Visual -->
+            <div class="w-full lg:w-1/2 relative">
+                <div class="absolute -inset-4 bg-brand-primary/20 rounded-3xl transform rotate-3 scale-105"></div>
+                <div class="absolute -inset-4 bg-brand-secondary/20 rounded-3xl transform -rotate-2 scale-105"></div>
+                
+                <div class="relative bg-white p-2 rounded-2xl shadow-2xl overflow-hidden group">
+                    <img 
+                        src="/fanaticos.jpg" 
+                        alt="Conductores de Fanáticos de la Música en cabina" 
+                        class="w-full h-auto object-cover rounded-xl transform transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <!-- Overlay sutil -->
+                    <div class="absolute inset-0 rounded-xl rounded-b-none ring-1 ring-inset ring-black/10"></div>
+                </div>
+
+                <!-- Decoración -->
+                <div class="absolute -bottom-10 -right-10 bg-brand-dark rounded-full p-6 shadow-xl z-20 hidden md:block border-4 border-brand-light">
+                    <svg class="w-12 h-12 text-brand-accent-yellow" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Contenido de Texto -->
+            <div class="w-full lg:w-1/2">
+                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary font-semibold text-sm tracking-widest uppercase">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+                    Sobre el Programa
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6 leading-tight">
+                    Jocosidad y Buena Vibra <span class="text-brand-primary">Garantizada</span>
+                </h2>
+                
+                <div class="prose prose-lg text-gray-600 mb-8 max-w-none">
+                    <p class="mb-4">
+                        Descubre datos curiosos, fechas de lanzamiento y anécdotas increíbles sobre los intérpretes y agrupaciones que marcaron historia. Nuestro objetivo es entretener, alegrar y recordar a través de la programación que hizo bailar a toda una generación.
+                    </p>
+                    <p class="font-medium text-brand-dark border-l-4 border-brand-primary pl-4 italic">
+                        "Para nosotros la música es lo mejor que puede existir por la relajación y el disfrute de los radio escucha. Es el motor que mueve al mundo, el idioma universal que nos conecta con nuestras mejores vivencias."
+                    </p>
+                </div>
+                
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-primary/20 text-brand-primary flex items-center justify-center mr-3 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="text-gray-700">Música de Los Blanco, Super Combo, Imperials y más.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-accent-green/20 text-brand-accent-green flex items-center justify-center mr-3 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="text-gray-700">Peticiones musicales en vivo.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-secondary/20 text-brand-secondary flex items-center justify-center mr-3 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="text-gray-700">Historias Inéditas de la gaita y ritmos tropicales.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
