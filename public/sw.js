@@ -14,10 +14,24 @@ self.addEventListener('activate', (event) => {
 // Fetch event: simple network-first strategy to satisfy PWA requirements
 // Browsers require a fetch event handler for the "Install as App" prompt
 self.addEventListener('fetch', (event) => {
+  // Ignorar peticiones que no sean GET o que sean a esquemas raros (chrome-extension)
+  if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
+    return;
+  }
+
   event.respondWith(
-    fetch(event.request).catch(() => {
-      // Basic offline fallback if needed
-      return new Response('Estás sin conexión a internet.');
-    })
+    fetch(event.request)
+      .then((response) => {
+        // En un escenario real aquí guardaríamos en caché dinámicamente.
+        // Por ahora, simplemente retornamos la respuesta de red fresca.
+        return response;
+      })
+      .catch(() => {
+        // Fallback básico offline (Requisito indispensable para PWA Installability)
+        return new Response(
+          '<html><body><h1>Estás sin conexión a internet.</h1><p>Por favor revisa tu red para continuar escuchando Misión FM.</p></body></html>',
+          { headers: { 'Content-Type': 'text/html' } }
+        );
+      })
   );
 });
