@@ -1,18 +1,39 @@
 ---
 import type { Advertiser } from '../../../domain/types';
+import { Image } from 'astro:assets';
 
 interface Props {
     advertiser: Advertiser;
 }
 
 const { advertiser } = Astro.props;
+
+// Load images from assets dynamically
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/sponsors/*.{jpeg,jpg,png,svg}');
+const imagePath = advertiser.image ? `/src/assets/sponsors/${advertiser.image}` : null;
+let imageData = null;
+
+if (imagePath && images[imagePath]) {
+    const mod = await images[imagePath]();
+    imageData = mod.default;
+}
 ---
 
 <div class="bg-brand-light border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-300 group flex flex-col h-full transform hover:-translate-y-1">
     
-    <div class="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-5 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-    </div>
+    {imageData ? (
+        <div class="w-full h-40 mb-5 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+           {advertiser.image?.endsWith('.svg') ? (
+               <img src={imageData.src} alt={advertiser.name} class="w-full h-full object-cover" />
+           ) : (
+               <Image src={imageData} alt={advertiser.name} class="w-full h-full object-cover" />
+           )}
+        </div>
+    ) : (
+        <div class="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-5 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        </div>
+    )}
 
     <h3 class="text-xl font-bold text-brand-dark mb-3 leading-snug group-hover:text-brand-primary line-clamp-2">{advertiser.name}</h3>
     <p class="text-gray-600 text-sm flex-grow mb-6 line-clamp-3">{advertiser.desc}</p>
