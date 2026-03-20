@@ -22,11 +22,13 @@ if (imagePath && images[imagePath]) {
 <div class="bg-brand-light border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-300 group flex flex-col h-full transform hover:-translate-y-1">
     
     {imageData ? (
-        <div class="w-full h-40 mb-5 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+        <div class="w-full h-40 mb-5 rounded-xl overflow-hidden shadow-sm flex items-center justify-center">
            {advertiser.image?.endsWith('.svg') ? (
                <img src={imageData.src} alt={advertiser.name} class="w-full h-full object-cover" />
            ) : (
-               <Image src={imageData} alt={advertiser.name} class="w-full h-full object-cover" />
+               <div class="w-full h-full bg-white flex items-center justify-center p-3 border border-gray-100/50 rounded-xl">
+                   <Image src={imageData} alt={advertiser.name} class="w-full h-full object-contain" />
+               </div>
            )}
         </div>
     ) : (
