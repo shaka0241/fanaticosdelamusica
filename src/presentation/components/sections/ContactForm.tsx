@@ -137,6 +137,18 @@ export default function ContactForm() {
                             {errors.message && <p className="text-brand-accent-red text-xs mt-1">{errors.message.message}</p>}
                         </div>
 
+                        {/* Honeypot (Protección Anti-Spam) */}
+                        <div style={{ display: 'none' }} aria-hidden="true">
+                            <label htmlFor="_gotcha">Deje este campo completamente en blanco, esto es usado para protección anti-spam.</label>
+                            <input
+                                id="_gotcha"
+                                type="text"
+                                tabIndex={-1}
+                                autoComplete="off"
+                                {...register('_gotcha')}
+                            />
+                        </div>
+
                         {/* Mensajes de Estado */}
                         {submitStatus === 'success' && (
                             <div className="bg-brand-accent-green/10 text-brand-accent-green p-4 rounded-lg flex items-center">

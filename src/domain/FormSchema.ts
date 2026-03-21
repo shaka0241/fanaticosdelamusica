@@ -6,6 +6,7 @@ export const contactSchema = z.object({
   phone: z.string().min(10, "Ingrese un número de teléfono válido"),
   email: z.string().email("Correo electrónico inválido").optional().or(z.literal('')),
   message: z.string().min(10, "El mensaje debe ser más detallado (mín. 10 caracteres)"),
+  _gotcha: z.string().optional(), // Honeypot trap para bots
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;
