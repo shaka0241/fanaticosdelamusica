@@ -9,7 +9,7 @@ interface Props {
 const { advertiser } = Astro.props;
 
 // Load images from assets dynamically
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/sponsors/*.{jpeg,jpg,png,svg}');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/sponsors/*.{jpeg,jpg,png,svg,webp}');
 const imagePath = advertiser.image ? `/src/assets/sponsors/${advertiser.image}` : null;
 let imageData = null;
 
