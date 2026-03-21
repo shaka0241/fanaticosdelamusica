@@ -23,9 +23,16 @@ export default function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // Simulación de envío a un API (Mock)
-      console.log('Datos del formulario capturados:', data);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al enviar el formulario');
+      }
+
       setSubmitStatus('success');
       reset(); // Limpiar el formulario en caso de éxito
       
