@@ -2,6 +2,10 @@ export interface Advertiser {
     id: number;
     name: string;
     desc: string;
-    phone: string | null;
-    image?: string; // Path to sponsor image or generic SVG
+    phone?: string | null;
+    whatsapp?: string | null;
+    social?: string | null;
+    address?: string | null;
+    schedule?: string | null;
+    image?: string;
 }

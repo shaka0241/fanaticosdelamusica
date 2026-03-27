@@ -2,7 +2,7 @@ import type { Advertiser } from '../domain/types';
 
 // Datos extraídos de anunciantes.txt
 export const advertisers: Advertiser[] = [
-  { id: 1, name: "Supermarket Abasto y Carnicería Ángel de Dios", desc: "Víveres en general, verduras, hortalizas, frutas, panadería y gran carnicería.", phone: "04120644212", image: "angeldedios.webp" },
+  { id: 1, name: "Supermarket Abasto y Carnicería Ángel de Dios", desc: "Víveres en general, verduras, hortalizas, frutas, panadería y gran carnicería.", phone: "04120644212", whatsapp: "04120644212", social: "@angeldedios", address: "Av. Principal, Cabimas", schedule: "Lunes a Domingo, 8:00 AM a 8:00 PM", image: "angeldedios.webp" },
   { id: 2, name: "Panaderia La Super Arco Iris C.A.", desc: "Pan fresco, dulce, salado, charcutería, refrescos, lácteos y víveres.", phone: null, image: "generic-bakery.svg" },
   { id: 3, name: "Refrigeración Yanez", desc: "Repuestos de refrigeración doméstica, industrial y comercial.", phone: "0414-6668931", image: "refrigeracionyanez.webp" },
   { id: 4, name: "Carnicería y Charcutería Mi Viejo C.A.", desc: "Carnes de primera calidad, charcutería, lácteos y víveres.", phone: "04246385470", image: "generic-meat.svg" },
