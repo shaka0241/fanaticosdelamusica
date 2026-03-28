@@ -15,7 +15,7 @@
             
             <div class="flex items-center gap-6">
                 <!-- Icono animado de disco -->
-                <div id="spin-disc" class="relative w-20 h-20 flex-shrink-0 animate-none">
+                <div id="spin-disc" class="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0 animate-none">
                     <div class="absolute inset-0 rounded-full border-4 border-brand-primary bg-[#111] shadow-[0_0_15px_rgba(210,93,17,0.5)]"></div>
                     <div class="absolute inset-2 rounded-full border border-gray-700"></div>
                     <div class="absolute inset-4 rounded-full border border-gray-600"></div>
@@ -51,8 +51,8 @@
                     </div>
 
                     <!-- Controles de Volumen -->
-                    <div class="flex gap-3 items-center ml-2 hidden sm:flex">
-                        <button id="btn-mute" class="text-gray-400 hover:text-white transition-colors" aria-label="Silenciar">
+                    <div class="flex gap-2 items-center ml-2 hidden sm:flex">
+                        <button id="btn-mute" class="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5 active:bg-white/10" aria-label="Silenciar">
                             <svg id="icon-vol-up" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
                             <svg id="icon-vol-mute" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
                         </button>

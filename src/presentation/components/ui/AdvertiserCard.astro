@@ -77,17 +77,17 @@ if (imagePath && images[imagePath]) {
             
             <div class="flex gap-2">
                 {advertiser.instagram && (
-                    <a href={`https://instagram.com/${advertiser.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors" aria-label={`Instagram de ${advertiser.name}`}>
+                    <a href={`https://instagram.com/${advertiser.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors" aria-label={`Instagram de ${advertiser.name}`}>
                         <Icon name="tabler:brand-instagram" class="w-5 h-5" />
                     </a>
                 )}
                 {advertiser.facebook && (
-                    <a href={advertiser.facebook.includes('http') ? advertiser.facebook : `https://facebook.com/${advertiser.facebook}`} target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors" aria-label={`Facebook de ${advertiser.name}`}>
+                    <a href={advertiser.facebook.includes('http') ? advertiser.facebook : `https://facebook.com/${advertiser.facebook}`} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors" aria-label={`Facebook de ${advertiser.name}`}>
                         <Icon name="tabler:brand-facebook" class="w-5 h-5" />
                     </a>
                 )}
                 {advertiser.tiktok && (
-                    <a href={`https://tiktok.com/${advertiser.tiktok.startsWith('@') ? advertiser.tiktok : '@' + advertiser.tiktok}`} target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center hover:bg-slate-800 hover:text-white transition-colors" aria-label={`TikTok de ${advertiser.name}`}>
+                    <a href={`https://tiktok.com/${advertiser.tiktok.startsWith('@') ? advertiser.tiktok : '@' + advertiser.tiktok}`} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center hover:bg-slate-800 hover:text-white transition-colors" aria-label={`TikTok de ${advertiser.name}`}>
                         <Icon name="tabler:brand-tiktok" class="w-5 h-5" />
                     </a>
                 )}
@@ -95,17 +95,17 @@ if (imagePath && images[imagePath]) {
 
             <div class="flex gap-2">
                 {advertiser.mapsUrl && (
-                    <a href={advertiser.mapsUrl} target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center hover:bg-amber-500 hover:text-white transition-colors" aria-label="Ver en Google Maps">
+                    <a href={advertiser.mapsUrl} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center hover:bg-amber-500 hover:text-white transition-colors" aria-label="Ver en Google Maps">
                         <Icon name="tabler:map-pin" class="w-5 h-5" />
                     </a>
                 )}
                 {advertiser.phone && (
-                    <a href={`tel:${advertiser.phone.replace(/\D/g, '')}`} class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-brand-primary hover:text-white transition-colors" aria-label="Llamar">
+                    <a href={`tel:${advertiser.phone.replace(/\D/g, '')}`} class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-brand-primary hover:text-white transition-colors" aria-label="Llamar">
                         <Icon name="tabler:phone" class="w-5 h-5" />
                     </a>
                 )}
                 {advertiser.whatsapp && (
-                    <a href={`https://wa.me/58${advertiser.whatsapp.replace(/\D/g, '').replace(/^0+/, '')}`} target="_blank" rel="noopener noreferrer" class="h-8 px-3 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-colors text-sm font-bold gap-1.5" aria-label="WhatsApp">
+                    <a href={`https://wa.me/58${advertiser.whatsapp.replace(/\D/g, '').replace(/^0+/, '')}`} target="_blank" rel="noopener noreferrer" class="h-10 px-4 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-colors text-sm font-bold gap-1.5" aria-label="WhatsApp">
                         <Icon name="tabler:brand-whatsapp" class="w-5 h-5" />
                         Chat
                     </a>
