@@ -2,14 +2,14 @@ import type { Advertiser } from '../domain/types';
 
 // Datos extraídos de anunciantes.txt
 export const advertisers: Advertiser[] = [
-  { id: 1, name: "Supermarket Abasto y Carnicería Ángel de Dios", desc: "Víveres en general, verduras, hortalizas, frutas, panadería y gran carnicería.", phone: "04120644212", whatsapp: "04120644212", social: "@angeldedios", address: "Av. Principal, Cabimas", schedule: "Lunes a Domingo, 8:00 AM a 8:00 PM", image: "angeldedios.webp" },
+  { id: 1, name: "Supermarket Abasto y Carnicería Ángel de Dios", desc: "Víveres en general, verduras, hortalizas, frutas, panadería y gran carnicería.", phone: "04120644212", whatsapp: "04120644212", instagram: "@angeldedios", facebook: "AngelDeDiosCA", tiktok: "@angeldedios", address: "Av. Principal, Sector X, Local 4", mapsUrl: "https://maps.google.com/?q=Cabimas", schedule: "Lunes a Domingo, 8:00 AM a 8:00 PM", isOpen: true, tags: ["Supermercado", "Abierto 24h", "Delivery"], altText: "Fachada del Supermercado Angel de Dios", image: "angeldedios.webp" },
   { id: 2, name: "Panaderia La Super Arco Iris C.A.", desc: "Pan fresco, dulce, salado, charcutería, refrescos, lácteos y víveres.", phone: null, image: "generic-bakery.svg" },
   { id: 3, name: "Refrigeración Yanez", desc: "Repuestos de refrigeración doméstica, industrial y comercial.", phone: "0414-6668931", image: "refrigeracionyanez.webp" },
   { id: 4, name: "Carnicería y Charcutería Mi Viejo C.A.", desc: "Carnes de primera calidad, charcutería, lácteos y víveres.", phone: "04246385470", image: "generic-meat.svg" },
   { id: 5, name: "Panadería La Maison Dupain", desc: "Pan campesino, dulce, francés, dulces, lácteos, charcutería y víveres.", phone: null, image: "generic-bakery.svg" },
   { id: 6, name: "Ferretería y Materiales Boca E´ Pan", desc: "Artículos de ferretería en general, materiales de construcción y electricidad.", phone: "04124511426", image: "generic-hardware.svg" },
   { id: 7, name: "Farmacia El Rosario II C.A.", desc: "Medicamentos, cosméticos, víveres y zona de café.", phone: "04246321392", image: "farmaciarosario2.webp" },
-  { id: 8, name: "Carnicería, Charcutería y Viveres Mis Valentinas", desc: "Carnes de primera, pollos, charcutería, lácteos y víveres.", phone: "04146279224", image: "carniceriamisvalentinas.webp" },
+  { id: 8, name: "Inversiones Mis Valentinas C.A", desc: "Ofrecemos carne de primera calidad, pollos, despresados de pollo, cerdo, charcutería, víveres y algo más...", phone: "04146568453", whatsapp: "04125295894", address: "Calle Páez casco central, saliendo a la calle Rosario", tags: ["Carnicería", "Charcutería", "Víveres"], image: "carniceriamisvalentinas.webp" },
   { id: 9, name: "Feria de Verduras y Lacteos Campo Blanco", desc: "Ofertas en lácteos, frutas, verduras, hortalizas, condimentos y granos.", phone: null, image: "feriaverdurascampoblanco.webp" },
   { id: 10, name: "Tatu Burger. Comida Rápida", desc: "Hamburguesas, perros calientes, arepitas cabimeras y combos especiales.", phone: "0424-6392203", image: "tatuburger.webp" },
   { id: 13, name: "Madelpa", desc: "Todo para el carpintero, electricistas, pintor, herrero e iluminación.", phone: "0424-6853618", image: "generic-hardware.svg" },
