@@ -2,12 +2,19 @@
 import type { Advertiser } from '../../../domain/types';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import { calcularIsOpen } from '../../../utils/scheduleUtils';
 
 interface Props {
     advertiser: Advertiser;
 }
 
 const { advertiser } = Astro.props;
+
+// Si hay horario definido, calcular el estado en tiempo real (zona horaria: América/Caracas)
+// Si no hay horario, usar el valor estático isOpen (o undefined si tampoco existe)
+const isOpen = advertiser.schedule
+    ? calcularIsOpen(advertiser.schedule)
+    : advertiser.isOpen;
 
 // Load images from assets dynamically
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/sponsors/*.{jpeg,jpg,png,svg,webp}');
@@ -24,10 +31,10 @@ if (imagePath && images[imagePath]) {
     
     {imageData ? (
         <div class="w-full h-40 mb-5 rounded-xl overflow-hidden shadow-sm flex items-center justify-center relative">
-           {advertiser.isOpen !== undefined && advertiser.isOpen !== null && (
-               <div class={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1.5 ${advertiser.isOpen ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                   <span class={`w-2 h-2 rounded-full ${advertiser.isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                   {advertiser.isOpen ? 'Abierto' : 'Cerrado'}
+           {isOpen !== undefined && isOpen !== null && (
+               <div class={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1.5 ${isOpen ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                   <span class={`w-2 h-2 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                   {isOpen ? 'Abierto' : 'Cerrado'}
                </div>
            )}
            {advertiser.image?.endsWith('.svg') ? (
@@ -40,8 +47,8 @@ if (imagePath && images[imagePath]) {
         </div>
     ) : (
         <div class="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-5 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300 relative">
-            {advertiser.isOpen !== undefined && advertiser.isOpen !== null && (
-                <span class={`absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${advertiser.isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
+            {isOpen !== undefined && isOpen !== null && (
+                <span class={`absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
             )}
             <Icon name="tabler:building-store" class="w-6 h-6" />
         </div>
