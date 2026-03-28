@@ -32,7 +32,7 @@ if (imagePath && images[imagePath]) {
     {imageData ? (
         <div class="w-full h-40 mb-5 rounded-xl overflow-hidden shadow-sm flex items-center justify-center relative">
            {isOpen !== undefined && isOpen !== null && (
-               <div class={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1.5 ${isOpen ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+               <div class={`absolute top-3 left-3 z-10 px-2 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1.5 ${isOpen ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                    <span class={`w-2 h-2 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
                    {isOpen ? 'Abierto' : 'Cerrado'}
                </div>
